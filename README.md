@@ -20,9 +20,11 @@ Note Confluent Schema Registry is running on port: `8081` using Docker see: [doc
 
 ## Overview  
 
-![](documentation/project-overview.png)
+![](documentation/images/project-overview.png)
 
-![](documentation/project-monitoring-setup.png)
+Including monitoring:
+
+![](documentation/images/project-overview-including-monitoring.png)
 
 
 
