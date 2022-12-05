@@ -35,3 +35,4 @@ management:
     tags:
       application: ${spring.application.name}
       env: local
+      consumer_group: ${spring.kafka.consumer.group-id}

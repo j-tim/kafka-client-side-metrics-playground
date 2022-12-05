@@ -88,7 +88,7 @@ services:
   # https://hub.docker.com/r/prom/prometheus
   # http://localhost:9090
   prometheus:
-    image: prom/prometheus:v2.39.1
+    image: prom/prometheus:v2.40.5
     container_name: prometheus
     environment:
       TZ: ${TZ}
@@ -102,7 +102,7 @@ services:
   # https://hub.docker.com/r/grafana/grafana
   # http://localhost:3000
   grafana:
-    image: grafana/grafana:9.2.2
+    image: grafana/grafana:9.2.7
     container_name: grafana
     environment:
       TZ: ${TZ}

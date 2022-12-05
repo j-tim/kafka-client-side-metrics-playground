@@ -122,7 +122,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.2",
+      "pluginVersion": "9.2.7",
       "targets": [
         {
           "datasource": {
@@ -211,7 +211,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.2",
+      "pluginVersion": "9.2.7",
       "targets": [
         {
           "datasource": {
@@ -302,7 +302,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.2",
+      "pluginVersion": "9.2.7",
       "targets": [
         {
           "datasource": {
@@ -391,7 +391,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.2",
+      "pluginVersion": "9.2.7",
       "targets": [
         {
           "datasource": {
@@ -473,7 +473,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.2.2",
+      "pluginVersion": "9.2.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -487,11 +487,13 @@
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
+          "editorMode": "code",
           "expr": "kafka_consumer_fetch_manager_records_lag{ instance=~\"$instance\", client_id=~\"$client_id\", topic=~\"$topic\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "consumer lag - {{instance}} | client-id -{{client_id}} | topic - {{topic}}",
+          "legendFormat": "consumer lag - {{instance}} | client-id -{{client_id}} |  partition - {{partition}} | topic - {{topic}}",
+          "range": true,
           "refId": "D"
         },
         {
@@ -589,7 +591,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.2.2",
+      "pluginVersion": "9.2.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -691,7 +693,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.2.2",
+      "pluginVersion": "9.2.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",

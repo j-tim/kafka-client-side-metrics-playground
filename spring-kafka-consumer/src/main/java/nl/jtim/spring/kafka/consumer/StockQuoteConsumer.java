@@ -19,7 +19,7 @@ public class StockQuoteConsumer {
 
         // Simulate a slow consumer
         try {
-            Thread.sleep(50);
+            Thread.sleep(25);
         } catch (InterruptedException e) {
             log.info("InterruptedException!", e);
         }
