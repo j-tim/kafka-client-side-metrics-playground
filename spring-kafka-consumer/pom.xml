@@ -16,9 +16,6 @@
   <properties>
     <java.version>11</java.version>
     <confluent.kafka.version>7.2.2</confluent.kafka.version>
-
-    <!-- https://mvnrepository.com/artifact/io.netty/netty-resolver-dns-native-macos -->
-    <netty-resolver-dns-native-macos.version>4.1.85.Final</netty-resolver-dns-native-macos.version>
   </properties>
   <dependencies>
 
@@ -34,7 +31,7 @@
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-webflux</artifactId>
+      <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.kafka</groupId>
@@ -45,12 +42,6 @@
       <artifactId>lombok</artifactId>
       <optional>true</optional>
     </dependency>
-    <dependency>
-      <groupId>io.netty</groupId>
-      <artifactId>netty-resolver-dns-native-macos</artifactId>
-      <version>${netty-resolver-dns-native-macos.version}</version>
-      <classifier>osx-aarch_64</classifier>
-    </dependency>
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -60,11 +51,6 @@
     <dependency>
       <groupId>io.projectreactor</groupId>
       <artifactId>reactor-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.kafka</groupId>
-      <artifactId>spring-kafka-test</artifactId>
       <scope>test</scope>
     </dependency>
 

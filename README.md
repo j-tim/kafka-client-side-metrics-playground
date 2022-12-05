@@ -60,7 +60,7 @@ Note Confluent Schema Registry is running on port: `8081` using Docker see: [doc
 
 ## Topic details
 
-* Topic name: `stock-ticks`
+* Topic name: `stock-quotes`
 * Number of partitions: 3
 
 For more information see the: [Topic Details](http://localhost:9000/ui/clusters/local/topics/stock-quotes/settings)
