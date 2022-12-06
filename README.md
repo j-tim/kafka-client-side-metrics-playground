@@ -121,7 +121,17 @@ Once started this application start producing a Stock Quote every 10ms to produc
 The producer application will expose Kafka client metrics via Micrometer ready for Prometheus to scrape.
 * [Producer - Kafka client side metrics Prometheus ](http://localhost:8080/actuator/prometheus)
 
-### Step 3: Run consumer application
+### Step 3: Run the slow downstream service
+
+This application will simulate a slow API that will be called by the `spring-kafka-consumer` application to intentionally build up consumer lag!
+
+See: [RestApi.java](slow-downstream-service/src/main/java/nl/jtim/spring/kafka/slow/service/RestApi.java)
+
+```bash
+./mvnw spring-boot:run -pl slow-downstream-service
+```
+
+### Step 4: Run consumer application
 
 Now start the consumer application (open a new terminal)
 
@@ -129,15 +139,10 @@ Now start the consumer application (open a new terminal)
 ./mvnw spring-boot:run -pl spring-kafka-consumer
 ```
 
-This application will simulate a slow consumer. 
-To intentionally build up consumer lag!
-
-See: [StockQuoteConsumer.java](spring-kafka-consumer/src/main/java/nl/jtim/spring/kafka/consumer/StockQuoteConsumer.java)
-
 The consumer application will expose Kafka client metrics via Micrometer ready for Prometheus to scrape.
 * [Consumer - Kafka client side metrics Prometheus ](http://localhost:8082/actuator/prometheus)
 
-### Step 4: Build up consumer lag
+### Step 5: Build up consumer lag
 
 The producer is producing more data to Kafka the consumer can handle.
 The result is the consumer is building up some consumer lag
@@ -156,7 +161,7 @@ Compare with the lag on the broker:
 
 Attach to the Kafka broker running in Docker:
 
-```
+```bash
 docker exec -it kafka bash
 ```
 
@@ -179,7 +184,7 @@ We see the client side metrics are far off compared to the lag number available 
 
 ## Run multiple consumer instances
 
-Run another two consumer instances:
+Run another two more consumer instances:
 
 ```bash
 ./mvnw spring-boot:run -pl spring-kafka-consumer -Dspring-boot.run.arguments=--server.port=8083

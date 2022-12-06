@@ -18,6 +18,7 @@
 		<module>avro-model</module>
 		<module>spring-kafka-consumer</module>
 		<module>spring-kafka-producer</module>
+		<module>slow-downstream-service</module>
 	</modules>
 
 </project>

@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: slow-service
+
+server:
+  port: 7999
