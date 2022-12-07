@@ -1,9 +1,9 @@
 # Kafka client side metrics playground
 
 Goal of this project: understand the client side Kafka metrics for both consumer and producers.
-With the focus on client side consumer lag metrics and understand how they should be interpreted compared to the consumer lag metrics available on the Kafka broker(s). 
+With the focus on client side consumer lag metrics and understand how they should be interpreted compared to the consumer lag numbers available on the Kafka broker(s). 
 
-This small project can be used to reproduce the difference in consumer lag number.
+This small project can be used to reproduce the difference in consumer lag numbers.
 
 Context for the example:
 
