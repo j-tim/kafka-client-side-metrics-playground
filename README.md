@@ -14,7 +14,7 @@ Context for the example:
 
 * Why are the consumer lag metrics number so far off compared with the consumer lag numbers available from the broker?
 * Are the client side metrics (especially the client side consumer lag metrics) reliable enough be used in dashboards and eventually to alert on?
-* Do we interpret the consumer lag metrics in a wrong?
+* Do we interpret the consumer lag metrics in a wrong way?
 
 ## Consumer lag metrics
 
