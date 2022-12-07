@@ -1,19 +1,19 @@
-# Kafka client side metrics playground
+# Kafka client-side metrics playground
 
-Goal of this project: understand the client side Kafka metrics for both consumer and producers.
-With the focus on client side consumer lag metrics and understand how they should be interpreted compared to the consumer lag numbers available on the Kafka broker(s). 
+The Goal of this project: understand the client-side Kafka metrics for both consumer and producers.
+With the focus on client-side consumer lag metrics and understanding how they should be interpreted compared to the consumer lag numbers available on the Kafka broker(s). 
 
 This small project can be used to reproduce the difference in consumer lag numbers.
 
-Context for the example:
+The context for the example:
 
-* Teams using Kafka should be able to monitor their own applications using client side Kafka metrics
+* Teams using Kafka should be able to monitor their own applications using client-side Kafka metrics
 * Without having access to Kafka broker metrics, because the Kafka cluster is owned by a platform team and the team using Kafka doesn't have access to the broker metrics.
 
 ## Questions to answer
 
 * Why are the consumer lag metrics number so far off compared with the consumer lag numbers available from the broker?
-* Are the client side metrics (especially the client side consumer lag metrics) reliable enough be used in dashboards and eventually to alert on?
+* Are the client-side metrics (especially the client-side consumer lag metrics) reliable enough to be used in dashboards and eventually to alert on?
 * Do we interpret the consumer lag metrics in a wrong way?
 
 ## Consumer lag metrics
@@ -24,17 +24,17 @@ From the [Confluent - Monitor Consumer Lag](https://docs.confluent.io/platform/c
 
 * `records-lag`
   * Description: The latest lag of the partition.
-  * In prometheus: `kafka_consumer_fetch_manager_records_lag`
+  * In Prometheus: `kafka_consumer_fetch_manager_records_lag`
   * Type: `gauge`
   * See: [`kafka_consumer_fetch_manager_records_lag`](http://localhost:9090/graph?g0.expr=kafka_consumer_fetch_manager_records_lag&g0.tab=1&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h) metric in Prometheus
 * `records-lag-avg`
   * Description: The average lag of the partition.
-  * In prometheus: `kafka_consumer_fetch_manager_records_lag_avg`
+  * In Prometheus: `kafka_consumer_fetch_manager_records_lag_avg`
   * Type: `gauge`
   * See: [`kafka_consumer_fetch_manager_records_lag_avg`](http://localhost:9090/graph?g0.expr=kafka_consumer_fetch_manager_records_lag_avg&g0.tab=1&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h) metric in Prometheus
 * `records-lag-max`
   * Description: The max lag of the partition.
-  * In prometheus: `kafka_consumer_fetch_manager_records_lag_max`
+  * In Prometheus: `kafka_consumer_fetch_manager_records_lag_max`
   * Type: `gauge`
   * See: [`kafka_consumer_fetch_manager_records_lag_max`](http://localhost:9090/graph?g0.expr=kafka_consumer_fetch_manager_records_lag_max&g0.tab=1&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h) metric in Prometheus
 
@@ -93,7 +93,7 @@ For more information see the: [Topic Details](http://localhost:9000/ui/clusters/
   * See scraped [targets](http://localhost:9090/targets)
 * [Grafana](http://localhost:3000/)
   * [Dashboard](http://localhost:3000/dashboards) 
-  * [Consumer dashboard](http://localhost:3000/d/CLUjsRFZz/kafka-consumer) (based on Kafka client side metrics)
+  * [Consumer dashboard](http://localhost:3000/d/CLUjsRFZz/kafka-consumer) (based on Kafka client-side metrics)
 
 ## Build the project
 
@@ -176,7 +176,7 @@ See the consumer lag:
 watch --interval 1 kafka-consumer-groups --describe --group my-consumer-group --bootstrap-server localhost:9092
 ```
 
-We see the client side metrics are far off compared to the lag number available on the broker:
+We see the client-side metrics are far off compared to the lag number available on the broker:
 
 
 ![](documentation/images/consumer-lag-single-instance.png)
@@ -193,7 +193,7 @@ Run another two more consumer instances:
 ./mvnw spring-boot:run -pl spring-kafka-consumer -Dspring-boot.run.arguments=--server.port=8084
 ```
 
-Also here we see the client side metrics are far off compared to the lag number available on the broker:
+Also here we see the client-side metrics are far off compared to the lag number available on the broker:
 
 ![](documentation/images/consumer-lag-3-instances-concurrent.png)
 
