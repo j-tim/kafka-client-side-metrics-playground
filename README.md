@@ -50,7 +50,8 @@ From the [Confluent - Monitor Consumer Lag](https://docs.confluent.io/platform/c
 | Applications          | Port | Avro  | Topic(s)      | Description                                                                                                                                |
 |-----------------------|------|-------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | spring-kafka-producer | 8080 | YES   | stock-quotes  | Simple producer of random stock quotes using Spring Kafka & Apache Avro.                                                                   |
-| spring-kafka-consumer | 8082 | YES   | stock-quotes  | Simple consumer of stock quotes using using Spring Kafka & Apache Avro. This application will be a slow consumer, building up consumer lag |
+| spring-kafka-consumer | 8082 | YES   | stock-quotes  | Simple consumer of stock quotes using using Spring Kafka & Apache Avro. This application will call the slow REST API, building up consumer lag |
+| slow-downstream-service | 7999 | NO   |   | Simple application exposing a slow performing REST API.  |
 
 | Module     | Description                                                                                                                |
 |------------|----------------------------------------------------------------------------------------------------------------------------|
