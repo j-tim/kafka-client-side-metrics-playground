@@ -59,20 +59,18 @@ From the [Confluent - Monitor Consumer Lag](https://docs.confluent.io/platform/c
 
 Note Confluent Schema Registry is running on port: `8081` using Docker see: [docker-compose.yml](docker-compose.yml).
 
+![](documentation/images/project-overview.png)
+
+Including monitoring:
+
+![](documentation/images/project-overview-including-monitoring.png)
+
 ## Topic details
 
 * Topic name: `stock-quotes`
 * Number of partitions: 3
 
 For more information see the: [Topic Details](http://localhost:9000/ui/clusters/local/topics/stock-quotes/settings)
-
-## Overview  
-
-![](documentation/images/project-overview.png)
-
-Including monitoring:
-
-![](documentation/images/project-overview-including-monitoring.png)
 
 ## Version
 
