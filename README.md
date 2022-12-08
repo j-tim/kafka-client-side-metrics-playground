@@ -10,6 +10,10 @@ The context for the example:
 * Teams using Kafka should be able to monitor their own applications using client-side Kafka metrics
 * Without having access to Kafka broker metrics, because the Kafka cluster is owned by a platform team and the team using Kafka doesn't have access to the broker metrics.
 
+## Documentation on consumer lag
+
+* [Confluent - Monitor Consumer Lag](https://docs.confluent.io/cloud/current/monitoring/monitor-lag.html#monitor-consumer-lag)
+
 ## Questions to answer
 
 * Why are the consumer lag metrics number so far off compared with the consumer lag numbers available from the broker?
