@@ -214,7 +214,7 @@ Run another two more consumer instances:
 ./mvnw spring-boot:run -pl spring-kafka-consumer -Dspring-boot.run.arguments=--server.port=8084
 ```
 
-Also here we see the client-side metrics are far off compared to the lag number available on the broker:
+Also, here we see the client-side metrics are far off compared to the lag number available on the broker:
 
 ![](documentation/images/consumer-lag-3-instances-concurrent.png)
 
