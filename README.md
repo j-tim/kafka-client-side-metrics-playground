@@ -14,6 +14,10 @@ The context for the example:
 
 * [Confluent - Monitor Consumer Lag](https://docs.confluent.io/cloud/current/monitoring/monitor-lag.html#monitor-consumer-lag)
 
+> Note that this metric differs from the output of the kafka-consumer-groups command output in two ways.
+> * Rebalancing Consumer Groups returns the last value for lag from before rebalancing until it completes.
+> * Consumer Groups with no active Consumers are not returned in the result.
+
 ## Questions to answer
 
 * Why are the consumer lag metrics number so far off compared with the consumer lag numbers available from the broker?
@@ -145,6 +149,13 @@ Now start the consumer application (open a new terminal)
 The consumer application will expose Kafka client metrics via Micrometer ready for Prometheus to scrape.
 * [Consumer - Kafka client side metrics Prometheus ](http://localhost:8082/actuator/prometheus)
 
+Although the consumer is consuming all 3 partitions only one partition is consumed concurrently. 
+So this explains why only the metrics for one partition are available.  
+
+From the documentation:
+
+> * Consumer Groups with no active Consumers are not returned in the result.
+
 ### Step 5: Build up consumer lag
 
 The producer is producing more data to Kafka the consumer can handle.
@@ -187,6 +198,12 @@ We see the client-side metrics are far off compared to the lag number available 
 
 ## Run multiple consumer instances
 
+Let's start 2 more consumers. 
+So we have 3 concurrent consumer threads running.
+Also give it a consumers a bit of time to rebalance.  
+
+Since we have 3 concurrent consumers (concurrently reading from all the 3 partitions) we have metrics for all 3 partitions. 
+
 Run another two more consumer instances:
 
 ```bash
@@ -200,6 +217,30 @@ Run another two more consumer instances:
 Also here we see the client-side metrics are far off compared to the lag number available on the broker:
 
 ![](documentation/images/consumer-lag-3-instances-concurrent.png)
+
+## Comparing the client side metrics via JConsole with the lag numbers available in the broker
+
+On the broker we see the lag number for all 3 partitions:
+
+```bash
+watch --interval 1 kafka-consumer-groups --describe --group my-consumer-group --bootstrap-server localhost:9092
+```
+
+We connect via JConsole to all 3 running consumer instances to directly inspect the consumer lag metrics exposed by the Kafka client.
+
+Run JConsole:
+
+```bash
+jconsole
+```
+
+You need to open JConsole 3 times and connect to a unique consumer application. 
+
+In JConsole: Open `kafa.consumer` > `consumer-fetch-manager-metrics` > `consumer-my-consumer-group-1` > `stock-quotes`.
+We see each consumer is consuming exactly one partition. 
+But also here the consumer lag numbers are far off compared with the consumer lag numbers on the broker (using `kafka-consumer-groups` command)  
+
+![](documentation/images/lag-jsonsole-jmx-3-instances-compared-to-lag-broker.png)
 
 ## Shutdown 
 
