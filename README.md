@@ -238,9 +238,20 @@ You need to open JConsole 3 times and connect to a unique consumer application.
 
 In JConsole: Open `kafa.consumer` > `consumer-fetch-manager-metrics` > `consumer-my-consumer-group-1` > `stock-quotes`.
 We see each consumer is consuming exactly one partition. 
-But also here the consumer lag numbers are far off compared with the consumer lag numbers on the broker (using `kafka-consumer-groups` command)  
+But also here the consumer lag numbers are off compared with the consumer lag numbers on the broker (using `kafka-consumer-groups` command)  
 
 ![](documentation/images/lag-jsonsole-jmx-3-instances-compared-to-lag-broker.png)
+
+How can we explain the difference?
+
+* We can explain this with the fact that the produce is running in parallel to the consumer. 
+* While the consumer is only aware of the progress of the last offset as far as it's most recent metadata pull - there will be differences here.
+
+In general, the lag's metric precision should not be something critical, unlike monitoring it's trend. 
+If the lag keeps on increasing, the consumer has a problem. 
+While the lag's presence at a given moment is not necessarily a problem that needs action.
+
+This way, the suggestion would be to monitor the trend. Obviously, it is, as mentioned earlier, easier to monitor the kafka-consumer-groups reported lag. However, if the only available approach is through monitoring the consumers themselves - this also is a valid approach.
 
 ## Shutdown 
 
