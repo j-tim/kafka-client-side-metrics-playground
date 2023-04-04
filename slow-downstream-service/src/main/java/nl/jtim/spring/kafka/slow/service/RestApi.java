@@ -10,7 +10,7 @@ import static java.lang.Thread.*;
 @Slf4j
 public class RestApi {
 
-    @GetMapping
+    @GetMapping("/api/greet")
     public Greeting greeting() {
         Greeting greeting = new Greeting("Hello World!");
 

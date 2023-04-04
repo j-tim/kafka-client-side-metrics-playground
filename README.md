@@ -59,7 +59,7 @@ From the [Confluent - Monitor Consumer Lag](https://docs.confluent.io/platform/c
 |-----------------------|------|-------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | spring-kafka-producer | 8080 | YES   | stock-quotes  | Simple producer of random stock quotes using Spring Kafka & Apache Avro.                                                                   |
 | spring-kafka-consumer | 8082 | YES   | stock-quotes  | Simple consumer of stock quotes using using Spring Kafka & Apache Avro. This application will call the slow REST API, building up consumer lag |
-| slow-downstream-service | 7999 | NO   |   | Simple application exposing a slow performing REST API.  |
+| slow-downstream-service | 7999 | NO   |               | Simple application exposing a slow performing REST API.  |
 
 | Module     | Description                                                                                                                |
 |------------|----------------------------------------------------------------------------------------------------------------------------|
@@ -72,6 +72,12 @@ Note Confluent Schema Registry is running on port: `8081` using Docker see: [doc
 Including monitoring:
 
 ![](documentation/images/project-overview-including-monitoring.png)
+
+## Micrometer Metrics endpoint Prometheus
+
+* Consumer instance 1 Actuator Prometheus Endpoint [http://localhost:8080/actuator/prometheus](http://localhost:8080/actuator/prometheus)
+* Consumer instance 2 Actuator Prometheus Endpoint [http://localhost:8083/actuator/prometheus](http://localhost:8083/actuator/prometheus)
+* Consumer instance 3 Actuator Prometheus Endpoint [http://localhost:8084/actuator/prometheus](http://localhost:8084/actuator/prometheus)
 
 ## Topic details
 

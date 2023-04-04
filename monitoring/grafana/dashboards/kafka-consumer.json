@@ -129,7 +129,7 @@
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
-          "expr": "avg(kafka_consumer_coordinator_commit_latency_avg{instance=~\"$instance\", client_id=~\"$client_id\"})",
+          "expr": "avg(kafka_consumer_coordinator_commit_latency_avg{instance=~\"$instance\", client_id=~\"$client_id\"}) >= 0",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -219,7 +219,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "sum(kafka_consumer_fetch_manager_records_lag{instance=~\"$instance\", client_id=~\"$client_id\", topic=~\"$topic\"})",
+          "expr": "sum(kafka_consumer_fetch_manager_records_lag{instance=~\"$instance\", client_id=~\"$client_id\", topic=~\"$topic\"} >=0)",
           "interval": "",
           "legendFormat": "",
           "range": true,

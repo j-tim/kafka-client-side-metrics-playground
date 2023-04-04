@@ -9,7 +9,7 @@
 	<name>kafka-client-side-metrics-playground</name>
 	<description>Spring Kafka project to understand client side Kafka metrics (consumer lag)</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>19</java.version>
 	</properties>
 
 	<packaging>pom</packaging>
